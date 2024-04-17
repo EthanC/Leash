@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "leash"
+version = "1.0.0"
+description = "Monitor the OPNsense DHCPv4 service and report newly-detected Leases via Discord."
+authors = ["EthanC <16727756+EthanC@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+python-dotenv = "^1.0.1"
+loguru = "^0.7.2"
+loguru-discord = "^1.2.2"
+httpx = "^0.27.0"
+discord-webhook = "^1.3.1"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.3.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff.lint]
+select = ["I"]
