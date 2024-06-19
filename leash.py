@@ -7,7 +7,7 @@ from sys import stdout
 import dotenv
 import httpx
 from discord_webhook import DiscordEmbed, DiscordWebhook
-from httpx import Response
+from httpx import ReadTimeout, Response, TimeoutException
 from loguru import logger
 from loguru_discord import DiscordSink
 
@@ -31,7 +31,7 @@ def Start() -> None:
 
     if url := environ.get("LOG_DISCORD_WEBHOOK_URL"):
         logger.add(
-            DiscordSink(url),
+            DiscordSink(url, suppress=[ReadTimeout, TimeoutException]),
             level=environ.get("LOG_DISCORD_WEBHOOK_LEVEL", "WARNING"),
             backtrace=False,
         )
@@ -124,6 +124,9 @@ def GetLeasesDHCPv4() -> list[dict[str, str]]:
         res.raise_for_status()
 
         leases = res.json()["rows"]
+    except ReadTimeout as e:
+        # Suppress ReadTimeout exceptions due to frequency
+        logger.opt(exception=e).info("Failed to fetch DHCPv4 Leases from OPNsense")
     except Exception as e:
         logger.opt(exception=e).error("Failed to fetch DHCPv4 Leases from OPNsense")
 
