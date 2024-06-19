@@ -9,7 +9,7 @@ import httpx
 from discord_webhook import DiscordEmbed, DiscordWebhook
 from httpx import Response
 from loguru import logger
-from loguru_discord import DiscordSink  # type: ignore
+from loguru_discord import DiscordSink
 
 from handlers.intercept import Intercept
 
