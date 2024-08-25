@@ -2,7 +2,7 @@
 
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/EthanC/Leash/ci.yaml?branch=main) ![Docker Pulls](https://img.shields.io/docker/pulls/ethanchrisp/leash?label=Docker%20Pulls) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/ethanchrisp/leash/latest?label=Docker%20Image%20Size)
 
-Leash monitors the OPNsense DHCPv4 service and reports newly-detected Leases via Discord.
+Leash monitors the OPNsense DHCPv4 service and notifies about new leases via Discord.
 
 <p align="center">
     <img src="https://i.imgur.com/iYiKFBS.png" draggable="false">
@@ -26,7 +26,7 @@ Regardless of your chosen setup method, Leash is intended for use with a task sc
 
 ### Docker (Recommended)
 
-Modify the following `docker-compose.yml` example file, then run `docker compose up`.
+Modify the following `compose.yaml` example file, then run `docker compose up`.
 
 ```yml
 services:
